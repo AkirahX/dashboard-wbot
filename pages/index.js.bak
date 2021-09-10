@@ -1,0 +1,23 @@
+import data from '../database.json'
+import Link from 'next/link'
+
+export async function getServerSideProps(context){
+    let totalUsers = Object.keys(data.users).length
+
+    return {
+        props: {
+            total: totalUsers
+        }
+    }
+
+}
+function Home(props){
+    
+    return <div>
+        <h1>Usuários {props.total}</h1>
+        <Link href='./registro'>
+            Registrarse
+        </Link>
+    </div>
+}
+export default Home
